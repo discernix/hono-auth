@@ -3,6 +3,13 @@ import { Hono } from "hono";
 import { serveStatic } from "@hono/node-server/serve-static";
 import home from "./pages";
 import auth from "./pages/auth";
+import https from "https";
+import fs from "fs";
+
+const certOptions = {
+  key: fs.readFileSync("localhost-key.pem"),
+  cert: fs.readFileSync("localhost.pem"),
+};
 
 const app = new Hono();
 
